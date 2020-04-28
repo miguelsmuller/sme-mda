@@ -1,0 +1,35 @@
+<ion-content class="ion-padding">
+  <div class="login">
+    <div>
+      <img src="assets/images/logo-pmrc.png" class="auth-logo">
+      <img src="assets/images/secretaria-educacao.svg" class="auth-text" />
+    </div>
+
+    <div class="login-form" [formGroup]="form">
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">E-Mail</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-button ion-item expand="block" size="large" (click)="createUser()">
+        Realizar Cadastro
+      </ion-button>
+    </div>
+
+    <div class="login-footer">
+      <ion-button (click)="goToLogin()">
+        Cancelar
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

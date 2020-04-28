@@ -1,0 +1,63 @@
+<ion-content fullscreen class="ion-padding" scroll-y="false">
+  <ion-slides #slides [formGroup]="form" pager="true">
+
+    <ion-slide>
+      <div class="slide">
+        <img src="assets/images/slide-1.png"/>
+        <h2>Seja Bem Vindo</h2>
+        <p>A Secretaria Municipal de Educação de Rio Claro-RJ está disponibilizando para vocês, queridos(as) alunos(as) e familiares,  esta plataforma com atividades para serem realizadas enquanto as aulas estão suspensas.</p>
+        <p>O material, que traz conteúdos do 1° bimestre, foi preparado por profissionais de nossa rede com muito empenho e dedicação.</p>
+        <p>Aproveitem!!!</p>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/images/slide-2.png"/>
+      <h2>Estamos quase prontos</h2>
+      <p>Para que você tenha acesso ao material da plataforma, selecione no campo abaixo o nome de sua escola.</p>
+
+      <ion-item>
+        <ion-label>Colégio</ion-label>
+        <ion-select cancelText="" okText="OK!" interface="action-sheet" formControlName="escola">
+          <ion-select-option value="Creche Ernane do Amaral Peixoto">Creche Ernane do Amaral Peixoto</ion-select-option>
+          <ion-select-option value="Creche Menino Jesus de Praga">Creche Menino Jesus de Praga</ion-select-option>
+          <ion-select-option value="Creche Geraldo Magela Gonçalves">Creche Geraldo Magela Gonçalves</ion-select-option>
+          <ion-select-option value="Escola Municipal Sertão Hortelãs">Escola Municipal Sertão Hortelãs</ion-select-option>
+          <ion-select-option value="Escola Municipal Pouso Seco">Escola Municipal Pouso Seco</ion-select-option>
+          <ion-select-option value="Escola Municipal Getulândia">Escola Municipal Getulândia</ion-select-option>
+          <ion-select-option value="Pré Escolar Prof. Laudelina da Silva Neto">Pré Escolar Prof. Laudelina da Silva Neto</ion-select-option>
+          <ion-select-option value="Escola Municipal Francisco Teixeira de Oliveira">Escola Municipal Francisco Teixeira de Oliveira</ion-select-option>
+          <ion-select-option value="Centro de Ensino Deputado Câmara Torres">Centro de Ensino Deputado Câmara Torres</ion-select-option>
+          <ion-select-option value="Escola Municipal Dr. Luiz Ascendino Dantas">Escola Municipal Dr. Luiz Ascendino Dantas</ion-select-option>
+          <ion-select-option value="Centro Municipal de Ensino São José">Centro Municipal de Ensino São José</ion-select-option>
+          <ion-select-option value="Núcleo Ed. Infatil Domiciana Gavião Neves II">Núcleo Ed. Infatil Domiciana Gavião Neves II</ion-select-option>
+          <ion-select-option value="Escola Municipal de Lídice">Escola Municipal de Lídice</ion-select-option>
+          <ion-select-option value="Escola Municipal Aureliano Portugal">Escola Municipal Aureliano Portugal</ion-select-option>
+          <ion-select-option value="Escola Municipal Rio das Pedras">Escola Municipal Rio das Pedras</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/images/slide-3.png"/>
+        <h2>Contamos com vocês</h2>
+        <p>Organize sua rotina de estudos:</p>
+        <ul>
+          <li>Escolha um ambiente confortável e silencioso;</li>
+          <li>Estabeleça horários fixos  de estudo;</li>
+          <li>Organize seu material.</li>
+        </ul>
+        <p>Juntos enfrentaremos esse momento de dificuldade!</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/images/slide-4.png"/>
+      <h2>Tudo pronto!</h2>
+      <p>Clique no botão abaixo para acessar o material.</p>
+      <ion-button size="large" (click)="goToInicio()">
+        Continuar<ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

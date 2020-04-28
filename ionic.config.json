@@ -1,0 +1,7 @@
+{
+  "name": "pmrc-mda",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

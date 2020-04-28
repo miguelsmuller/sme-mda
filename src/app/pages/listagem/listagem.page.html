@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Arquivo</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ng-container *ngFor="let arquivo of arquivos">
+      <ion-item button detail="false" (click)="goToArquivo(arquivo.url)">
+        <ion-icon name="document-outline" slot="start"></ion-icon>
+        <ion-label>{{arquivo.titulo}}</ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>

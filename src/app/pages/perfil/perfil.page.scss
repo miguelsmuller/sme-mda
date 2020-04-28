@@ -1,0 +1,39 @@
+:host {
+  ion-content{
+    display: flex;
+
+    img{
+      width: 60%;
+      max-width: 300px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 50%;
+    }
+
+    span{
+      font-size: 11px;
+      color: #ccc;
+      display: block;
+      padding: 10px 0px 20px;
+      text-align: center;
+    }
+
+    ion-item{
+      --background: transparent;
+      --border-color: transparent;
+      --border-style: solid;
+      --border-width: 0px;
+      --border-radius: none;
+      --highlight-height: 0;
+      padding: 0;
+    }
+
+    ion-label{
+      font-size: 14px;
+      font-weight: 800;
+    }
+  }
+}
+
+
+

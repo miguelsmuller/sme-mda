@@ -1,0 +1,42 @@
+:root,
+:root[mode=ios],
+:root[mode=md] {
+  --ion-font-family: var(--ion-default-font);
+  background-color: var(--ion-custom-white) !important;
+}
+
+.teste{
+  --ion-background-color: var(--ion-custom-white) !important;
+}
+
+/* TOLL BAR */
+ion-toolbar {
+  --background: var(--ion-custom-green);
+  --color: var(--ion-custom-white);
+
+  ion-button {
+    --color: var(--ion-custom-white);
+  }
+}
+
+/* TAB BAR */
+ion-tab-bar {
+  --background: white;
+  --color: #b0b0b0;
+  --border: 1px solid #f0f0f0;
+
+  ion-tab-button{
+    --color-focused: var(--ion-custom-green);
+    --color-selected: var(--ion-custom-green);
+  }
+
+  ion-icon {
+    font-size: 22px;
+  }
+}
+
+/* CONTENT */
+ion-content {
+  --background: var(--ion-custom-white) !important;
+  --color: var(--ion-custom-blue) !important;
+}
