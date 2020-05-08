@@ -1,7 +1,7 @@
 # **Material Didático de Apoio**
 > Plataforma mobile desenvolvida com Ionic + Angular + Firebase para a Secretaria Municipal de Educação de Rio Claro com intuito de disponibilizar PDF's com conteúdo didático de apoio durante o período de isolamento social causado pela pandemia do COVID-19.
 
-**Versão Estável:** 1.0  
+**Versão Estável:** 1.1  
 **Licensa:** Proprietário - Usu Privado  
 Todos os direitos reservados.  
 É estritamente proibida a cópia não autorizada de qualquer arquivo deste projeto, por qualquer meio.  
@@ -112,5 +112,8 @@ ___
 
 
 # **Changelog**  
+= **1.1** - 28/04/2020  
+Arquivos desnecessários excluídos  
+
 = **1.0** - 28/04/2020  
-Versão 1.0  
+Projeto Inicial  
