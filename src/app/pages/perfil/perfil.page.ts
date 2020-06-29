@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { ToastController, NavController, ActionSheetController } from '@ionic/angular';
+import { NavController, ActionSheetController } from '@ionic/angular';
 import { User } from 'src/app/models/user.model';
 
 @Component({
@@ -9,13 +8,11 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-  user: User;
+  public user: User;
 
   constructor(
-    private db: AngularFirestore,
-    private toastCtrl: ToastController,
-    private navCtrl: NavController,
-    private actionSheetCtrl: ActionSheetController
+    private serviceNavigation: NavController,
+    private serviceActionSheet: ActionSheetController
     ) { }
 
   ngOnInit() {
@@ -25,22 +22,8 @@ export class PerfilPage implements OnInit {
     }
   }
 
-  async showMessage(message: string) {
-    const toast = await this.toastCtrl.create({
-      message, duration: 3000, buttons: [
-        {
-          icon: 'send',
-          handler: () => {
-            this.navCtrl.navigateForward('/post');
-          }
-        }
-      ]
-    });
-    toast.present();
-  }
-
   async showOptions() {
-    const actionSheet = await this.actionSheetCtrl.create({
+    const actionSheet = await this.serviceActionSheet.create({
       header: 'Opções',
       buttons: [{
         text: 'Logout',
@@ -48,7 +31,7 @@ export class PerfilPage implements OnInit {
         icon: 'power',
         handler: () => {
           localStorage.removeItem('mda.user');
-          this.navCtrl.navigateRoot('/login');
+          this.serviceNavigation.navigateRoot('/login');
         }
       }, {
         text: 'Cancelar',

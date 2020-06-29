@@ -1,23 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { HttpClientModule } from '@angular/common/http';
 
-import { ListagemPage } from './listagem.page';
+import { ContatoPage } from './contato.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forChild([
       {
         path: '',
-        component: ListagemPage
+        component: ContatoPage
       }
     ])
   ],
-  declarations: [ListagemPage]
+  declarations: [ContatoPage]
 })
-export class ListagemPageModule {}
+export class ContatoPageModule {}

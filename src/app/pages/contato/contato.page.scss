@@ -1,0 +1,17 @@
+:host {
+  ion-content {
+    --background: var(--ion-custom-white) !important;
+    --color: var(--ion-custom-blue) !important;
+  }
+
+  ion-fab-button{
+    --background: var(--ion-custom-blue) !important;
+    --color: var(--ion-custom-white) !important;
+  }
+
+  p{
+    text-align: justify;
+    font-size: 14px;
+    line-height: 22px;
+  }
+}

@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/completar-registro/completar-registro.module').then( m => m.CompletarRegistroPageModule)
   },
   {
+    path: 'perguntas-frequentes',
+    loadChildren: () => import('./pages/faq/faq.module').then( m => m.FaqPageModule)
+  },
+  {
     path: '',
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/template-tab/template-tab.module').then( m => m.TemplateTabPageModule)

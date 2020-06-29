@@ -30,12 +30,16 @@ const routes: Routes = [
         loadChildren: () => import('../arquivo/arquivo.module').then( m => m.ArquivoPageModule)
       },
       {
-        path: 'sme',
+        path: 'apresentacao',
         loadChildren: () => import('../sme/sme.module').then( m => m.SmePageModule)
       },
       {
-        path: 'mda',
-        loadChildren: () => import('../mda/mda.module').then( m => m.MdaPageModule)
+        path: 'perguntas-frequentes',
+        loadChildren: () => import('../faq/faq.module').then( m => m.FaqPageModule)
+      },
+      {
+        path: 'contato',
+        loadChildren: () => import('../contato/contato.module').then( m => m.ContatoPageModule)
       },
       {
         path: '',

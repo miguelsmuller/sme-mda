@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, IonSlides } from '@ionic/angular';
-import { FireBaseService } from '../../services/firebase.service';
-import { User } from 'src/app/models/user.model';
+
+import { User } from '@app/models/user.model';
+import { FireBaseService } from '@app/services/firebase.service';
 
 @Component({
   selector: 'app-completar-registro',
@@ -16,8 +17,8 @@ export class CompletarRegistroPage implements OnInit {
 
   constructor(
     private frmBuilder: FormBuilder,
-    private fireService: FireBaseService,
-    private ctrlNav: NavController
+    private serviceFireBase: FireBaseService,
+    private serviceNavigation: NavController
   ) {
     this.form = this.frmBuilder.group({
       escola: ['', Validators.required]
@@ -26,6 +27,7 @@ export class CompletarRegistroPage implements OnInit {
 
   ngOnInit() {
   }
+
 
   goToInicio() {
     if (this.form.invalid) {
@@ -43,9 +45,9 @@ export class CompletarRegistroPage implements OnInit {
 
       localStorage.setItem('mda.user', JSON.stringify(user));
 
-      this.fireService.addUser(user);
+      this.serviceFireBase.addUser(user);
 
-      this.ctrlNav.navigateForward('/tabs/inicio');
+      this.serviceNavigation.navigateForward('/tabs/inicio');
     }
   }
 }

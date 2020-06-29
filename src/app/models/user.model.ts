@@ -4,16 +4,5 @@ export interface User {
   email: string;
   image: string;
   escola: string;
+  alunos?: Array<any>;
 }
-
-/* export class User {
-   constructor(
-      public uid: string = '',
-      public name: string = '',
-      public email: string = '',
-      public image: string = '',
-      public escola: string = ''
-   ) {
-   }
-}
- */

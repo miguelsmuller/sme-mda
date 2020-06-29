@@ -1,12 +1,10 @@
+import { Reference } from '@angular/fire/storage/interfaces';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-
-import { Arquivo } from 'src/app/models/arquivo.model';
-import { FireBaseService } from 'src/app/services/firebase.service';
-import { LoadingService } from 'src/app/services/loading.service';
+import { Subject, merge } from 'rxjs';
+import { takeUntil, map, mergeMap } from 'rxjs/operators';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-listagem',
@@ -14,30 +12,29 @@ import { LoadingService } from 'src/app/services/loading.service';
   styleUrls: ['./listagem.page.scss'],
 })
 export class ListagemPage implements OnInit {
-  arquivos: Arquivo[];
-
-  unSubscribeAllObservables$: Subject<any> = new Subject();
+  public listItems;
+  public listPrefix;
+  private unSubscribeAllObservables$: Subject<any> = new Subject();
 
   constructor(
     private route: ActivatedRoute,
-    private fbService: FireBaseService,
-    private ldService: LoadingService,
-    private ctrlNav: NavController,
+    private serviceStorage: AngularFireStorage,
+    private serviceNavigation: NavController,
   ) { }
 
   ngOnInit() {
-    this.route.params
-      .pipe( takeUntil(this.unSubscribeAllObservables$) )
-      .subscribe(params => {
-        this.ldService.present();
-        this.fbService.getArquivos(params.ref)
-        .pipe( takeUntil(this.unSubscribeAllObservables$) )
-        .subscribe(
-          (data) => {
-            this.arquivos = data;
-            this.ldService.dismiss();
-          }
-        );
+    this.route.queryParams.pipe(
+      takeUntil(this.unSubscribeAllObservables$),
+      mergeMap(
+        (data) => this.getFolderContent(data.prefix)
+      ),
+      map((data) => {
+        return { items: this.getExtraInformation(data.items), prefixes: data.prefixes };
+      }),
+    ).subscribe(
+      (data) => {
+        this.listItems = data.items;
+        this.listPrefix = data.prefixes;
       }
     );
   }
@@ -46,17 +43,45 @@ export class ListagemPage implements OnInit {
     this.unSubscribeAllObservables$.next();
   }
 
-  goToArquivo(urlFile: string) {
-    const object = { url: `https://docs.google.com/viewer?embedded=true&url=${urlFile}` };
+  getExtraInformation(arrayReference: Reference[]) {
+    const newArrayReferences = [];
+    arrayReference.forEach(async (item, index) => {
+      newArrayReferences.push({
+        item,
+        downloadUrl: await item.getDownloadURL().then((promisseReturn) => promisseReturn ),
+        metaData: await item.getMetadata().then((promisseReturn) => promisseReturn ),
+      });
+    });
+    return newArrayReferences;
+  }
 
-    this.ctrlNav.navigateForward('/tabs/arquivo', {
+  getFolderContent(folder: string) {
+    return this.serviceStorage.ref('/' + folder).listAll()
+    .pipe(
+      takeUntil(this.unSubscribeAllObservables$),
+      map((data) => {
+        return {items: data.items, prefixes: data.prefixes};
+      })
+    );
+  }
+
+  goToPrefix(prefix: string) {
+    this.serviceNavigation.navigateForward('/tabs/listagem', {
       queryParams: {
-        value : JSON.stringify(object)
+        prefix
+      },
+    });
+  }
+
+  goToItem(item: string) {
+    this.serviceNavigation.navigateForward('/tabs/arquivo', {
+      queryParams: {
+        item
       },
     });
   }
 
   goBack() {
-    this.ctrlNav.back();
+    this.serviceNavigation.back();
   }
 }

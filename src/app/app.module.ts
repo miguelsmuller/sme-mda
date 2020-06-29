@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { environment } from '../environments/environment';
@@ -18,6 +19,7 @@ import { AppComponent } from './app.component';
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
 

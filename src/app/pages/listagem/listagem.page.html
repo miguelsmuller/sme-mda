@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Arquivo</ion-title>
+    <ion-title>Conteúdo</ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">
         <ion-icon slot="icon-only" name="arrow-back">
@@ -12,10 +12,18 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ng-container *ngFor="let arquivo of arquivos">
-      <ion-item button detail="false" (click)="goToArquivo(arquivo.url)">
+    <ng-container *ngFor="let prefix of listPrefix">
+      <ion-item button detail="false" (click)="goToPrefix(prefix.fullPath)">
+        <ion-icon name="folder-open-outline" slot="start"></ion-icon>
+        <ion-label>{{prefix.name}}</ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+  <ion-list>
+    <ng-container *ngFor="let reference of listItems">
+      <ion-item button detail="false" (click)="goToItem(reference.downloadUrl)">
         <ion-icon name="document-outline" slot="start"></ion-icon>
-        <ion-label>{{arquivo.titulo}}</ion-label>
+        <ion-label>{{reference.item.name}}</ion-label>
       </ion-item>
     </ng-container>
   </ion-list>

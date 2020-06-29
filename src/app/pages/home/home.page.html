@@ -2,23 +2,12 @@
   <div class="home-header">
     <h1>Seja bem vindo</h1>
     <h2>{{user.name}}</h2>
-    <h3>{{user.escola}}</h3>
   </div>
   <div class="home-content">
     <div class="grid">
-      <div class="ion-activatable" (click)="goToSme()">
-        <ion-icon name="bookmark-outline"></ion-icon>SME
-        <ion-ripple-effect></ion-ripple-effect>
-      </div>
-
-      <div class="ion-activatable" (click)="goToMda()">
-        <ion-icon name="people-circle-outline"></ion-icon>MDA
-        <ion-ripple-effect></ion-ripple-effect>
-      </div>
-
-      <ng-container *ngFor="let categoria of categorias">
-        <div class="ion-activatable" (click)="goToCategoria(categoria.ref)">
-          <ion-icon name="newspaper-outline"></ion-icon>{{categoria.nome}}
+      <ng-container *ngFor="let prefix of listPrefix">
+        <div class="ion-activatable" (click)="goToPrefix(prefix.name)">
+          <ion-icon name="folder-open"></ion-icon>{{prefix.name}}
           <ion-ripple-effect></ion-ripple-effect>
         </div>
       </ng-container>
@@ -26,6 +15,3 @@
     </div>
   </div>
 </ion-content>
-
-
-

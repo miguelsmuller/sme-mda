@@ -2,15 +2,17 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-sme',
-  templateUrl: './sme.page.html',
-  styleUrls: ['./sme.page.scss'],
+  selector: 'app-faq',
+  templateUrl: './faq.page.html',
+  styleUrls: ['./faq.page.scss'],
 })
-export class SmePage {
+export class FaqPage {
 
   constructor(
     private serviceNavigation: NavController,
   ) { }
 
-  goBack() { this.serviceNavigation.back(); }
+  goBack() {
+    this.serviceNavigation.back();
+  }
 }
