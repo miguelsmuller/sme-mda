@@ -3,32 +3,8 @@
     --background: var(--ion-custom-white) !important;
     --color: var(--ion-custom-blue) !important;
 
-    p{
-      text-align: justify;
-      font-size: 14px;
-      line-height: 22px;
-
-      &:first-child{
-        margin-top: 0px;
-      }
-
-      &.lastParagraphs{
-        text-align: center;
-        font-weight: 700;
-        line-height: 14px;
-        margin: 2px 0px;
-      }
-
-      &.firstLastParagraphs{
-        margin-top: 30px;
-      }
-    }
-
-    small{
-      display: block;
-      text-align: center;
-      margin: 0 auto;
-      width: 60%;
+    ion-card-subtitle{
+      font-weight: 800;
     }
   }
 }

@@ -12,16 +12,17 @@
     </ion-fab-button>
   </ion-fab>
 
-  <p>Aqui você tem um canal direto de comunicação com a equipe que administra a plataforma e as atividades. O objetivo é prover um relacionamento democrático com os alunos e responsáveis.</p>
-  <p>Usando o formulário abaixo você envia sua manifestação que poderá ser respondida em até 48h.</p>
+  <div class="content">
+    <p>Aqui você tem um canal direto de comunicação com a equipe que administra a plataforma e as atividades. O objetivo é prover um relacionamento democrático com os alunos e responsáveis.</p>
+    <p>Usando o formulário abaixo você envia sua manifestação que poderá ser respondida em até 48h.</p>
 
     <div class="login-form" [formGroup]="contactForm">
       <ion-item>
-        <ion-label position="floating">Que tipo de manifestão é essa?</ion-label>
+        <ion-label position="floating">Que tipo de manifestação é essa?</ion-label>
         <ion-select cancelText="" okText="Selecionar" formControlName="tipo">
           <ion-select-option value="Dúvida">Dúvida</ion-select-option>
           <ion-select-option value="Reclamação">Reclamação</ion-select-option>
-          <ion-select-option value="Solcitação">Solcitação</ion-select-option>
+          <ion-select-option value="Solicitação">Solicitação</ion-select-option>
           <ion-select-option value="Sugestão">Sugestão</ion-select-option>
           <ion-select-option value="Elogio">Elogio</ion-select-option>
         </ion-select>
@@ -37,4 +38,5 @@
         <ion-textarea formControlName="conteudo" auto-grow="true" rows="5"></ion-textarea>
       </ion-item>
     </div>
+  </div>
 </ion-content>

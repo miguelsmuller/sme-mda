@@ -44,6 +44,13 @@ export class ContatoPage {
     if (this.contactForm.valid) {
       this.sendEmail(this.contactForm.value).subscribe(
         () => {
+          this.serviceCommon.newAnalyticsEvent(
+            'action',
+            'send-form',
+            'send-contact-form',
+            this.contactForm.value
+          );
+
           this.screenInSending = false;
           this.contactForm.reset();
           this.serviceCommon.showToast('Manifestação enviada com sucesso!');

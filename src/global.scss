@@ -16,4 +16,10 @@
 
 /* Custom SCSS */
 @import "./theme/custom";
-@import "./theme/skeleton"
+@import "./theme/skeleton";
+
+.content{
+  max-width: 720px;
+  margin: 0 auto;
+  height: 100%;
+}

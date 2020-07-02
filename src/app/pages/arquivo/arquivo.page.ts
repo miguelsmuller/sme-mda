@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { DomSanitizer} from '@angular/platform-browser';
 import { Subject } from 'rxjs';
+
+import { CommonService } from '@app/services/common.service';
+
+declare let gtag:(type:string, eventName:string, eventAttr:any) => void;
 
 @Component({
   selector: 'app-arquivo',
   templateUrl: './arquivo.page.html',
 })
-export class ArquivoPage  implements OnInit {
+export class ArquivoPage {
   public itemUrl: any;
   private unSubscribeAllObservables$: Subject<any> = new Subject();
 
@@ -16,12 +20,25 @@ export class ArquivoPage  implements OnInit {
     private route: ActivatedRoute,
     private serviceNavigation: NavController,
     private serviceSanitizer: DomSanitizer,
-  ) { }
-
-  ngOnInit() {
+    private serviceCommon: CommonService,
+  ) {
     this.route.queryParams.subscribe(
       (data) => {
+        this.serviceCommon.newAnalyticsEvent(
+          'action',
+          'load',
+          'load-file',
+          data.item
+        );
+
         this.itemUrl = this.serviceSanitizer.bypassSecurityTrustResourceUrl(data.item);
+
+        // let url = data.item;
+        // url = url.replace('&', '%26');
+        // console.log(url);
+
+        // const object = `https://docs.google.com/viewer?embedded=true&url=${url}`;
+        // this.itemUrl = this.serviceSanitizer.bypassSecurityTrustResourceUrl(object);
       }
     );
   }

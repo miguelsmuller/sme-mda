@@ -32,4 +32,19 @@
       --border-width: 1px;
     }
   }
+
+  @media (min-width: 720px) {
+    max-width: 720px;
+    margin: 0 auto;
+
+    .login{
+      .auth-logo{
+        width:10%;
+      }
+
+      .auth-text{
+        width: 40%;
+      }
+    }
+  }
 }

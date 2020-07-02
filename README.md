@@ -1,7 +1,7 @@
 # **Material Didático de Apoio**
 > Plataforma mobile desenvolvida com Ionic + Angular + Firebase para a Secretaria Municipal de Educação de Rio Claro com intuito de disponibilizar PDF's com conteúdo didático de apoio durante o período de isolamento social causado pela pandemia do COVID-19.
 
-**Versão Estável:** 2.0  
+**Versão Estável:** 2.1  
 **Licensa:** Proprietário - Usu Privado  
 Todos os direitos reservados.  
 É estritamente proibida a cópia não autorizada de qualquer arquivo deste projeto, por qualquer meio.  
@@ -59,6 +59,22 @@ Cada novo recurso deve residir em sua própria branch e devem partir do branch *
 
 O branch **`develop`** é o branch que roda no ambiente de teste. Ele armazena as últimas funcionalidades incluídas no projetos e que ainda não estão aptas a entrarem no branch **`master`**.
 
+- **Rebase do branch develop**  
+```shell
+git rebase -i HEAD~N
+```
+
+- **Recriação do branch develop**  
+```shell
+// Delete localmente
+git branch -d develop
+
+// Delete remotamente
+git push origin --delete develop
+
+git checkout -b develop
+```
+
 
 
 ## **Enviado atualizações**
@@ -112,6 +128,9 @@ ___
 
 
 # **Changelog**  
+= **2.1** - 03/07/2020  
+Melhorias estéticas para desktop, correção de ortografia e Inserção de EventTracking do GoogleAnalytics
+
 = **2.0** - 01/07/2020  
 Atualização com melhorias de desempenho e funcionalidades  
 

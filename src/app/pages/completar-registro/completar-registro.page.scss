@@ -41,4 +41,12 @@
       }
     }
   }
+
+  @media (min-width: 720px) {
+    ion-slides{
+      img{
+        max-width: 40%;
+      }
+    }
+  }
 }

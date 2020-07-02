@@ -32,6 +32,12 @@
       font-size: 14px;
       font-weight: 800;
     }
+
+    @media (min-width: 720px) {
+      img{
+        width: 25%;
+      }
+    }
   }
 }
 
