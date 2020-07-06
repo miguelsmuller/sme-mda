@@ -49,4 +49,11 @@ export class CommonService {
       event_label: eventLabel,
       value: eventValue })
   }
+
+  newAnalyticsException(erroMessage: string) {
+    gtag('send', 'exception', {
+      exDescription: erroMessage,
+      exFatal: false
+    })
+  }
 }

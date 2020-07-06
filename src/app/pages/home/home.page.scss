@@ -35,6 +35,11 @@
     min-height: 200px;
     padding: 0px 15px;
 
+    .erroMessage{
+      padding: 60px 30px;
+      text-align: center;
+      font-weight: 600;
+    }
     .grid{
       display: flex;
       flex-wrap: wrap;

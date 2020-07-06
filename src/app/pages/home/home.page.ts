@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
-import { User } from 'src/app/models/user.model';
+import { CommonService } from '@app/services/common.service';
+import { User } from '@app/models/user.model';
 
 import { AngularFireStorage } from '@angular/fire/storage';
 
@@ -11,12 +12,14 @@ import { AngularFireStorage } from '@angular/fire/storage';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  user: User;
-  listPrefix;
+  public user: User;
+  public listPrefix;
+  public loadStatus = true;
 
   constructor(
     private serviceNavigation: NavController,
-    private serviceStorage: AngularFireStorage
+    private serviceStorage: AngularFireStorage,
+    private serviceCommon: CommonService,
   ) {
     this.user = JSON.parse(localStorage.getItem('mda.user'));
   }
@@ -25,6 +28,10 @@ export class HomePage implements OnInit {
     this.serviceStorage.ref('/').listAll().subscribe(
       (data) => {
         this.listPrefix = data.prefixes;
+      },
+      (erro) => {
+        this.loadStatus = false;
+        this.serviceCommon.newAnalyticsException('FirebaseStorage Erro');
       }
     );
   }

@@ -92,6 +92,7 @@ export class ContatoPage {
       retry(1),
       catchError(error => {
         this.serviceCommon.showToast('Ação indisponível no momento!');
+        this.serviceCommon.newAnalyticsException('ContactForm Erro');
         return throwError(`Error Code: ${error.status}\nMessage: ${error.message}`);
       })
     );

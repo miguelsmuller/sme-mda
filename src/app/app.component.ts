@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
+import { AngularFireMessaging } from '@angular/fire/messaging';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,16 @@ import { Platform } from '@ionic/angular';
 })
 export class AppComponent implements OnInit {
   constructor(
-    public platform: Platform
+    public platform: Platform,
+    private afMessaging: AngularFireMessaging
   ) {}
 
   async ngOnInit() {
     document.body.setAttribute('data-theme', 'light');
+    this.afMessaging.requestToken
+      .subscribe(
+      (token) => { console.log(token); },
+      (error) => { console.error(error); }
+    );
   }
 }
