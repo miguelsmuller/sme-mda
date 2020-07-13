@@ -6,10 +6,11 @@
 
 <ion-content class="ion-padding">
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="sendForm()" [disabled]="!contactForm.valid || screenInSending">
-      <ion-icon *ngIf="!screenInSending"  name="send-outline"></ion-icon>
-      <ion-spinner *ngIf="screenInSending" name="lines-small"></ion-spinner>
+    <a [href]="'https://api.whatsapp.com/send?phone=5524999062409&text=*Tipo* :' + contactForm.value.tipo + ' *Mensagem* :' + contactForm.value.conteudo " target="_blank" [attr.disabled]="!contactForm.valid" (click)="contactForm.valid">
+    <ion-fab-button [disabled]="!contactForm.valid">
+      <ion-icon name="logo-whatsapp"></ion-icon>
     </ion-fab-button>
+    </a>
   </ion-fab>
 
   <div class="content">

@@ -4,9 +4,7 @@ import { NavController } from '@ionic/angular';
 import { DomSanitizer} from '@angular/platform-browser';
 import { Subject } from 'rxjs';
 
-import { CommonService } from '@app/services/common.service';
 
-declare let gtag:(type:string, eventName:string, eventAttr:any) => void;
 
 @Component({
   selector: 'app-arquivo',
@@ -20,17 +18,9 @@ export class ArquivoPage {
     private route: ActivatedRoute,
     private serviceNavigation: NavController,
     private serviceSanitizer: DomSanitizer,
-    private serviceCommon: CommonService,
   ) {
     this.route.queryParams.subscribe(
       (data) => {
-        this.serviceCommon.newAnalyticsEvent(
-          'action',
-          'load',
-          'load-file',
-          data.item
-        );
-
         this.itemUrl = this.serviceSanitizer.bypassSecurityTrustResourceUrl(data.item);
 
         // let url = data.item;

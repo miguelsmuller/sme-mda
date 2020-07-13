@@ -116,7 +116,7 @@ git diff --cached
 O projeto utiliza o próprio firebase através de sua ferramenta de linha comando. Antes de fazer o deploy é necessário fazer o build do projeto.
 
 ```shell
-ionic build     "build": "ng build --prod --aot --build-optimizer --vendor-chunk --source-map=false"  
+ionic build   "ng build --prod --aot --build-optimizer --vendor-chunk --source-map=false"  
 ```
 
 ```shell
@@ -128,11 +128,19 @@ ___
 
 
 # **Changelog**  
+= **2.3** - 15/07/2020  
+Atualização de evento do Analytics
+Utilização do Whatsapp na página de contato
+
 = **2.2** - 07/07/2020  
-Mensagem de informação no limite da API do FirebaseStorage, Inclusão de PushNotifications e Envio de exceções para o GoogleAnalytics
+Mensagem de informação no limite da API do FirebaseStorage
+Inclusão de PushNotifications
+Envio de exceções para o GoogleAnalytics
 
 = **2.1** - 03/07/2020  
-Melhorias estéticas para desktop, correção de ortografia e Inserção de EventTracking do GoogleAnalytics
+Melhorias estéticas para desktop
+Correção de ortografia
+Inserção de EventTracking do GoogleAnalytics
 
 = **2.0** - 01/07/2020  
 Atualização com melhorias de desempenho e funcionalidades  

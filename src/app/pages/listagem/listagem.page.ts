@@ -6,6 +6,8 @@ import { Subject, merge } from 'rxjs';
 import { takeUntil, map, mergeMap } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/storage';
 
+import { CommonService } from '@app/services/common.service';
+
 @Component({
   selector: 'app-listagem',
   templateUrl: './listagem.page.html',
@@ -20,6 +22,7 @@ export class ListagemPage implements OnInit {
     private route: ActivatedRoute,
     private serviceStorage: AngularFireStorage,
     private serviceNavigation: NavController,
+    private serviceCommon: CommonService,
   ) { }
 
   ngOnInit() {
@@ -74,6 +77,13 @@ export class ListagemPage implements OnInit {
   }
 
   goToItem(item: string) {
+    this.serviceCommon.newAnalyticsEvent(
+      'action',
+      'load',
+      'load-file',
+      item
+    );
+
     this.serviceNavigation.navigateForward('/tabs/arquivo', {
       queryParams: {
         item

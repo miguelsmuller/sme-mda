@@ -43,11 +43,11 @@ export class CommonService {
   newAnalyticsEvent(eventCategory: string,
     eventName: string,
     eventLabel: string = null,
-    eventValue: number = null) {
+    eventValue: string = null) {
     gtag('event', eventName, {
       event_category: eventCategory,
       event_label: eventLabel,
-      value: eventValue })
+      value: eventValue });
   }
 
   newAnalyticsException(erroMessage: string) {
