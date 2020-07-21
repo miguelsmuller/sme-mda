@@ -43,4 +43,8 @@ export class HomePage implements OnInit {
       },
     });
   }
+
+  goToParque() {
+    this.serviceNavigation.navigateForward(`/tabs/parque`);
+  }
 }

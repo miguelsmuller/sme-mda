@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ActionSheetController } from '@ionic/angular';
-import { User } from 'src/app/models/user.model';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { User } from '@app/models/user.model';
+
+import { AngularFirestore } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-perfil',
@@ -9,10 +13,14 @@ import { User } from 'src/app/models/user.model';
 })
 export class PerfilPage implements OnInit {
   public user: User;
+  public isAdmin = false;
+  public listItems;
 
   constructor(
     private serviceNavigation: NavController,
-    private serviceActionSheet: ActionSheetController
+    private serviceActionSheet: ActionSheetController,
+    private serviceFireDatabase: AngularFirestore,
+    private serviceFirebaseAuth: AngularFireAuth,
     ) { }
 
   ngOnInit() {
@@ -20,26 +28,22 @@ export class PerfilPage implements OnInit {
     if (!this.user.image) {
       this.user.image = 'https://placehold.it/220';
     }
+
+    if (this.user.uid === 'HlVlWTc1L9Xr7ScxgbSpcNq1Aw73') {
+      this.isAdmin = true;
+    }
   }
 
-  async showOptions() {
-    const actionSheet = await this.serviceActionSheet.create({
-      header: 'Opções',
-      buttons: [{
-        text: 'Logout',
-        role: 'destructive',
-        icon: 'power',
-        handler: () => {
-          localStorage.removeItem('mda.user');
-          this.serviceNavigation.navigateRoot('/login');
-        }
-      }, {
-        text: 'Cancelar',
-        icon: 'close',
-        role: 'cancel',
-      }]
-    });
-    await actionSheet.present();
-  }
+  generateList() {
+    const itemsCollection  = this.serviceFireDatabase.collection<User>('users');
+    this.listItems = itemsCollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as User;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
 
+
+  }
 }

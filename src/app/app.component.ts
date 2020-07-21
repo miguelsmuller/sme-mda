@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     document.body.setAttribute('data-theme', 'light');
     this.afMessaging.requestToken
       .subscribe(
-      (token) => { console.log(token); },
+      (token) => {},
       (error) => { console.error(error); }
     );
   }

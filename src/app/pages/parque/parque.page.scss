@@ -1,0 +1,13 @@
+:host {
+  ion-content {
+    --background: var(--ion-custom-white) !important;
+    --color: var(--ion-custom-blue) !important;
+
+    ion-card {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+

@@ -1,7 +1,7 @@
 # **Material Didático de Apoio**
-> Plataforma mobile desenvolvida com Ionic + Angular + Firebase para a Secretaria Municipal de Educação de Rio Claro com intuito de disponibilizar PDF's com conteúdo didático de apoio durante o período de isolamento social causado pela pandemia do COVID-19.
+> Plataforma mobile desenvolvida com Ionic + Angular + Firebase para a Secretaria Municipal de Educação de Rio Claro com intuito de disponibilizar PDF's com conteúdo didático de apoio durante o período de isolamento social causado pela pandemia do COVID-19. Readme Atualizado.
 
-**Versão Estável:** 2.2  
+**Versão Estável:** 2.5  
 **Licensa:** Proprietário - Usu Privado  
 Todos os direitos reservados.  
 É estritamente proibida a cópia não autorizada de qualquer arquivo deste projeto, por qualquer meio.  
@@ -18,6 +18,7 @@ ___
 * [Enviado atualizações](#enviado-atualizações)  
 * [Precauções de contribuição](#precauções-de-contribuição)
 * [Deploy](#deploy)  
+* [Extra Information](#extra-information)  
 ### [Changelog](#changelog-1)  
 
 
@@ -124,10 +125,31 @@ firebase deploy
 ```
 
 
+
+## **Extra Information**
+https://firebase.google.com/docs/cli/auth#CSV
+
+```shell
+"firebase auth:export exportation.csv"  
+```
+
+
+
 ___
 
 
+
 # **Changelog**  
+= **2.5** - 06/11/2020  
+Atualização com Tour Virtual Parque Arqueologio
+Atualização de evento do Analytics
+Ajustes finos
+
+= **2.4** - 27/07/2020  
+Listagem de Usuários
+Atualização da FAQ
+Ajustes finos
+
 = **2.3** - 15/07/2020  
 Atualização de evento do Analytics
 Utilização do Whatsapp na página de contato

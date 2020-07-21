@@ -14,6 +14,19 @@
             <ion-ripple-effect></ion-ripple-effect>
           </div>
         </ng-container>
+        <div class="ion-activatable" (click)="goToParque()">
+          <ion-icon name="trail-sign"></ion-icon>Visite São João Marcos
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+
+      </div>
+      <div class="erroMessage" *ngIf="loadStatus == false" >
+        <p>Estamos enfretando problemas técnicos no momento.</p>
+        <p>Tente novamente mais tarde.</p>
+      </div>
+      <div class="erroMessage" *ngIf="loadStatus == false" >
+        <p>Estamos enfretando problemas técnicos no momento.</p>
+        <p>Tente novamente mais tarde.</p>
       </div>
       <div class="erroMessage" *ngIf="loadStatus == false" >
         <p>Estamos enfretando problemas técnicos no momento.</p>

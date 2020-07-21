@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TemplateTabPageRoutingModule } from './template-tab-routing.module';
-
-import { TemplateTabPage } from './template-tab.page';
+import { ParquePage } from './parque.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TemplateTabPageRoutingModule
+    RouterModule.forChild([
+      {
+        path: '',
+        component: ParquePage
+      }
+    ])
   ],
-  declarations: [TemplateTabPage]
+  declarations: [ParquePage]
 })
-export class TemplateTabPageModule {}
+export class ParquePageModule {}

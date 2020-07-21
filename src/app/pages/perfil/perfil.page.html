@@ -1,11 +1,6 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Perfil</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="showOptions()">
-        <ion-icon name="ellipsis-vertical" (click)="showOptions()"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -28,4 +23,14 @@
       <p>{{user.escola}}</p>
     </ion-item>
   </div>
+
+  <ng-container *ngIf="isAdmin">
+    <ion-button color="primary"  (click)="generateList()">Gerar Lista</ion-button>
+    <div style="-webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text;">
+      <div *ngFor="let item of listItems | async">
+        {{item.uid}}, {{item.name}}, {{item.escola}}, {{item.email}}
+      </div><br/>
+    </div>
+  </ng-container>
+
 </ion-content>

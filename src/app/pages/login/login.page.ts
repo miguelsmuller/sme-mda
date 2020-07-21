@@ -30,55 +30,10 @@ export class LoginPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-    if (localStorage.getItem('mda.user')) {
-      this.serviceNavigation.navigateRoot('tabs/inicio');
-    }
-  }
+  ngOnInit() { }
 
   goToSignup() { this.serviceNavigation.navigateForward('registro'); }
   goToRecover() { this.serviceNavigation.navigateForward('registro'); }
-
-  loginUnificado(data) {
-      const isNewUser = data.additionalUserInfo.isNewUser;
-
-      if (isNewUser) {
-        const newUser: User = {
-          uid: data.user.uid,
-          name: data.user.displayName,
-          email: data.user.email,
-          image: data.user.photoURL,
-          escola: null
-        };
-
-        localStorage.setItem('mda.user', JSON.stringify(newUser));
-
-        this.serviceFirebase.addUser(newUser);
-        this.serviceNavigation.navigateRoot('completar-registro');
-
-      } else {
-        this.serviceFirebase
-        .getUser(data.user.uid)
-        .subscribe(
-          (value: User) => {
-            const userFromFireStore: User = {
-              uid: value.uid,
-              name: value.name,
-              email: value.email,
-              image: value.image,
-              escola: value.escola,
-            };
-
-            localStorage.setItem('mda.user', JSON.stringify(userFromFireStore));
-
-            this.serviceNavigation.navigateRoot('tabs/inicio');
-          },
-          (erro) => {
-            this.serviceCommon.showToast(erro);
-          }
-        );
-      }
-  }
 
   async signInWithPassword() {
     if (this.form.valid) {
@@ -88,7 +43,7 @@ export class LoginPage implements OnInit {
       this.serviceFirebaseAuth.signInWithEmailAndPassword(this.form.controls.email.value, this.form.controls.password.value)
       .then((data) => {
         loading.dismiss();
-        this.loginUnificado(data);
+        this.completeActionLogin(data);
       })
       .catch(() => {
         loading.dismiss();
@@ -102,10 +57,51 @@ export class LoginPage implements OnInit {
   async signInWithGoogle() {
     this.serviceFirebaseAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then((data) => {
-      this.loginUnificado(data);
+      this.completeActionLogin(data);
     })
     .catch((err) => {
       this.serviceCommon.showToast(err);
     });
+  }
+
+  completeActionLogin(data) {
+    const isNewUser = data.additionalUserInfo.isNewUser;
+
+    if (isNewUser) {
+      const newUser: User = {
+        uid: data.user.uid,
+        name: data.user.displayName,
+        email: data.user.email,
+        image: data.user.photoURL,
+        escola: null
+      };
+
+      localStorage.setItem('mda.user', JSON.stringify(newUser));
+
+      this.serviceFirebase.addUser(newUser);
+      this.serviceNavigation.navigateRoot('completar-registro');
+
+    } else {
+      this.serviceFirebase
+      .getUser(data.user.uid)
+      .subscribe(
+        (value: User) => {
+          const userFromFireStore: User = {
+            uid: value.uid,
+            name: value.name,
+            email: value.email,
+            image: value.image,
+            escola: value.escola,
+          };
+
+          localStorage.setItem('mda.user', JSON.stringify(userFromFireStore));
+
+          this.serviceNavigation.navigateRoot('tabs/inicio');
+        },
+        (erro) => {
+          this.serviceCommon.showToast(erro);
+        }
+      );
+    }
   }
 }
