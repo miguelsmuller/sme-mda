@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
     this.afMessaging.requestToken
       .subscribe(
       (token) => {},
-      (error) => { console.error(error); }
+      (error) => {}
     );
   }
 }

@@ -20,7 +20,6 @@ import { AppComponent } from './app.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     AngularFireMessagingModule,
-    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ServiceWorkerModule.register('combined-sw.js', { enabled: environment.production }),
   ],
   bootstrap: [AppComponent]

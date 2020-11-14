@@ -1,7 +1,7 @@
 # **Material Didático de Apoio**
 > Plataforma mobile desenvolvida com Ionic + Angular + Firebase para a Secretaria Municipal de Educação de Rio Claro com intuito de disponibilizar PDF's com conteúdo didático de apoio durante o período de isolamento social causado pela pandemia do COVID-19. Readme Atualizado.
 
-**Versão Estável:** 2.5  
+**Versão Estável:** 2.6  
 **Licensa:** Proprietário - Usu Privado  
 Todos os direitos reservados.  
 É estritamente proibida a cópia não autorizada de qualquer arquivo deste projeto, por qualquer meio.  
@@ -42,6 +42,49 @@ Aplicações híbridas são aplicativos móveis construídos de maneira alternat
 
 
 ## **Usando o projeto localmente**
+- **Environment**  
+Configuração do Firebase e do Mailgun 
+./src/environments/environment.prod.ts e ./src/environments/environment.ts
+
+```shell
+export const environment = {
+  production: false,
+  firebaseConfig: {
+    apiKey: '', 
+    authDomain: '',
+    databaseURL: '',
+    projectId: '',
+    storageBucket: '',
+    messagingSenderId: '',
+    appId: '',
+    measurementId: ''
+  },
+  apiEmail: {
+    url: '',
+    key: '',
+    emailFrom: ''
+  },
+};
+```
+
+Configuração Firebase Messaging
+./src/firebase-messaging-sw.js
+
+```shell
+importScripts('https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/7.8.1/firebase-messaging.js');
+
+firebase.initializeApp({
+  apiKey: '',
+  projectId: '',
+  messagingSenderId: '',
+  appId: '',
+});
+
+const messaging = firebase.messaging();
+```
+
+
 - **Rodando localmente**  
 ```shell
 ionic serve --lab --external
@@ -140,6 +183,9 @@ ___
 
 
 # **Changelog**  
+= **2.6** - 14/11/2020  
+Ajustes para permitir exibição pública do projeto no GitHub
+
 = **2.5** - 06/11/2020  
 Atualização com Tour Virtual Parque Arqueologio
 Atualização de evento do Analytics
