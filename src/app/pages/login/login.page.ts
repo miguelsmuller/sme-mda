@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LoadingController, NavController } from '@ionic/angular';
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 
 import { User } from '@app/models/user.model';
 import { FireBaseService } from '@app/services/firebase.service';
@@ -94,12 +94,15 @@ export class LoginPage implements OnInit {
             escola: value.escola,
           };
 
+          console.log(userFromFireStore);
+
           localStorage.setItem('mda.user', JSON.stringify(userFromFireStore));
 
           this.serviceNavigation.navigateRoot('tabs/inicio');
         },
         (erro) => {
           this.serviceCommon.showToast(erro);
+          console.log(erro);
         }
       );
     }

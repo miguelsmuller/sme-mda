@@ -3,7 +3,7 @@
   "editor.wordWrap": "bounded",
   "editor.minimap.enabled": false,
 
-  "editor.codeActionsOnSave": { "source.fixAll.tslint": true },
+  //"editor.codeActionsOnSave": { "source.fixAll.tslint": true },
 
   // "files.autoSave": "afterDelay",
   // "files.autoSaveDelay": 3000,

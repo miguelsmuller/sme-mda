@@ -1,74 +1,56 @@
-# **Material Didático de Apoio**
-> Plataforma mobile desenvolvida com Ionic + Angular + Firebase para a Secretaria Municipal de Educação de Rio Claro com intuito de disponibilizar PDF's com conteúdo didático de apoio durante o período de isolamento social causado pela pandemia do COVID-19. Readme Atualizado.
+# **Educational Sharing Activities- COVID-19**
+## **OVERVIEW**
+Platform for sharing educational activities (pdfs) for students in the [**Municipal Education Network of Rio Claro / Rio de Janeiro**](https://rioclaro.rj.gov.br/) during the period of social isolation caused by the pandemic of COVID-19 in the year 2020. The Project was developed with **[Angular](https://angular.io/)** + **[Ionic](https://ionicframework.com/)** + **[Firebase](https://firebase.com/)**.
 
-**Versão Estável:** 2.6  
-**Licensa:** Proprietário - Usu Privado  
-Todos os direitos reservados.  
-É estritamente proibida a cópia não autorizada de qualquer arquivo deste projeto, por qualquer meio.  
+The project was in production during the period of the year 2020.
 
+- **Version:** 2.7 
+- **License:** Proprietary - Private Use - All rights reserved.
+- **Available for consultation and study only** 
 
-___
+[**`Angular`**](https://angular.io/) is a platform and framework for building the application interface using HTML, CSS and, mainly, JavaScript, created by Google's developers. It has some basic elements that make this construction interesting. Among the main ones, we can highlight the components, templates, directives, routing, modules, services, dependency injection and infrastructure tools that automate tasks, such as executing the unit tests of an application.  
 
+[**`Ionic`**](https://ionicframework.com/) is a free Open Source Framework under the MIT license for the development of hybrid mobile applications. Hybrid applications are mobile applications built in an alternative way to native applications. They are built, generally, using HTML + CSS + JavaScript, in this way they have become extremely popular, as it allows multiplatform development, using the same HTML for different operating systems. 
 
-### [Desenvolvimento e Operação](#desenvolvimento-e-operação-1)  
-* [Angular Framework](#angular-framework)  
-* [Ionic Framerwork](#ionic-framework)  
-* [Usando o projeto localmente](#usando-o-projeto-localmente)
-* [Git Workflow](#git-workflow)  
-* [Enviado atualizações](#enviado-atualizações)  
-* [Precauções de contribuição](#precauções-de-contribuição)
-* [Deploy](#deploy)  
-* [Extra Information](#extra-information)  
-### [Changelog](#changelog-1)  
+[**`Firebase`**](https://console.firebase.google.com/) is a toolset platform developed by Google that helps build, improve, and grow your app. The tools it offers cover a large part of the services that developers would normally have to build on their own. This includes things like analysis, authentication, databases, configuration, file storage, push messages and the list goes on. The services are hosted in the cloud and have great scheduling flexibility. The following services offered by Firebase were used in this project: **Authentication**, **Database with Cloud Firestore**, **Storage**, **Hosting**, **Cloud Messaging**
+  
+<br>
 
+## **CONTENT**
+* [Project Requirements](#️project-requirements)
+* [Running Locally](#️running-locally)
+* [Project Workflow](#project-workflow)   
+* [Contributing](#contributing)
+* [Deploy](#deploy)    
+* [Firebase](#firebase)    
+* [Changelog](#changelog)  
 
-___
+<br>
 
+# **DEVELOPMENT AND OPERATION**  
+## **PROJECT REQUIREMENTS**  
+### **INSTALL ALL DEPENDENCIES**
+Make sure that you also have **[NodeJS](https://nodejs.org/)** and **[NPM](https://www.npmjs.com/)** installed on your computer.
+- **`$ node --version`** 
+- **`$ npm --version`** 
 
-# **Desenvolvimento e Operação**
-## **Angular Framework**
- [**`Angular`**](https://angular.io/) é uma plataforma e framework para construção da interface de aplicações usando HTML, CSS e, principalmente, JavaScript, criada pelos desenvolvedores da Google.  
-Ele possui alguns elementos básicos que tornam essa construção interessante.  
-Dentre os principais, podemos destacar os componentes, templates, diretivas, roteamento, módulos, serviços, injeção de dependências e ferramentas de infraestrutura que automatizam tarefas, como a de executar os testes unitários de uma aplicação.  
+Also make sure you have **Angular CLI** and **Ionic CLI** installed globally on your machine.  
+- **`$ npm install -g @angular/cli @ionic/cli`**  
 
-- **Angular** - *Version: 9.0*
+Install dependencies of project with:  
+- **`$ npm install`**
 
+<br>
 
-## **Ionic Framework**
- [**`Ionic`**](https://ionicframework.com/) é um Framework Open Source gratuito sobre a licença MIT para desenvolvimento de aplicações mobile híbridas.  
-Aplicações híbridas são aplicativos móveis construídos de maneira alternativa a aplicações nativa. São construídos, geralmente, utilizando HTML+CSS+JavaScript, desta maneira se tornaram extremamente populares, pois permite o desenvolvimento multiplataforma, utilizando o mesmo HTML para diferentes sistemas operacionais.
+### **ENVIRONMENT FILES**  
+It is necessary for the project to configure the firebase and mailgun through the file **`./src/environments/environment.prod.ts`** and **`./src/environments/environment.ts`**.
 
-- **Ionic** - *Version: 5.0*
+An example of the file can be found in the respective directory.
 
+<br>
 
-## **Usando o projeto localmente**
-- **Environment**  
-Configuração do Firebase e do Mailgun 
-./src/environments/environment.prod.ts e ./src/environments/environment.ts
-
-```shell
-export const environment = {
-  production: false,
-  firebaseConfig: {
-    apiKey: '', 
-    authDomain: '',
-    databaseURL: '',
-    projectId: '',
-    storageBucket: '',
-    messagingSenderId: '',
-    appId: '',
-    measurementId: ''
-  },
-  apiEmail: {
-    url: '',
-    key: '',
-    emailFrom: ''
-  },
-};
-```
-
-Configuração Firebase Messaging
-./src/firebase-messaging-sw.js
+### **MESSAGING CONFIGURATION**  
+Firebase Messaging configuration **`./src/firebase-messaging-sw.js`**
 
 ```shell
 importScripts('https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js');
@@ -84,105 +66,73 @@ firebase.initializeApp({
 const messaging = firebase.messaging();
 ```
 
+<br>
 
-- **Rodando localmente**  
-```shell
-ionic serve --lab --external
-```  
-- A flag `--lab` permite a vizualização multiplataforma no navegador
-- A flag `--external` é para que a aplicação esteja disponivel para acesso dentro da rede internal
+## **RUNNING LOCALLY**  
+Run te command  
+**`$ ionic serve --lab --external`**
+- The **`--lab`** flag allows multiplatform viewing in the browser
+- The **`--external`** flag is for the application to be available for access within the internal network 
 
+<br>
 
+## **PROJECT WORKFLOW**  
+This workflow uses two main branches to record the project's history. The **`master`** branch stores the official release history, and the **`develop`** branch serves as a resource integration branch.
 
-## **Git Workflow**  
-Esse fluxo de trabalho usa duas branchs principais para registrar o histórico do projeto. O branch **`master`** armazena o histórico oficial de releases, e o branch **`develop`** serve como um ramo de integração de recursos.
+The branch **`master`** is the branch that runs in the production environment. All commits on the **`master`** branch must have a version number.
 
-O branch **`master`** é o branch que roda no ambiente de produção. Todos os commits no branch **`master`** devem possuir um número de versão.
+Each new resource must reside on its own branch and must start from the **`develop`** branch. When a feature is completed, it is merged back into **`develop`**. Resources should never interact directly with the master.
 
-Cada novo recurso deve residir em sua própria branch e devem partir do branch **`develop`**. Quando um recurso é concluído, ele é mesclado novamente no **`develop`**. Os recursos nunca devem  interagir diretamente com o mestre.
+The branch **`develop`** is the branch that runs in the test environment. It stores the latest features included in the projects and which are not yet able to enter the branch **`master`**. 
 
-O branch **`develop`** é o branch que roda no ambiente de teste. Ele armazena as últimas funcionalidades incluídas no projetos e que ainda não estão aptas a entrarem no branch **`master`**.
+<br>
 
-- **Rebase do branch develop**  
-```shell
-git rebase -i HEAD~N
-```
+## **CONTRIBUTING**  
+### **REPORTING PROBLEMS**  
+To report an issue, please [create a new pull request](https://github.com/miguelsmuller/sme-mda/pulls).  
 
-- **Recriação do branch develop**  
-```shell
-// Delete localmente
-git branch -d develop
+### **SENDING CODE**  
+Before sending your collaboration, check your code and the conventions adopted in the project and take the following steps:
 
-// Delete remotamente
-git push origin --delete develop
+- Always check the branch used: **`$ git status`**
+- Update your branch: **`$ git pull`**
+- Rebase your branch: **`$ git rebase -i HEAD~N`**
+- See the differences before committing: **`$ git diff --cached`**
+- Delete locally develop branch: **`$ git branch -d develop`**
+- Delete remotely develop branch: **`$ git push origin --delete develop`**
+- Recreate develop branch: **`$ git checkout -b develop`**
 
-git checkout -b develop
-```
+### **IMPORTANT INFORMATION**  
+- Do not commit before running the project locally
+- See the changes implemented being carried out
+- And especially make sure that these changes work
+- Useful git commands [here](https://gist.github.com/leocomelli/2545add34e4fec21ec16)  
 
+<br>
 
-
-## **Enviado atualizações**
-1. [Clone o repositório!](https://help.github.com/articles/fork-a-repo/)
-2. [Sincronize](https://help.github.com/articles/syncing-a-fork/) seu fork com a última versão
-3. Crie uma branch para sua funcionalidade: `git checkout -b feature-123`
-4. Commit suas alterações: `git commit -m 'Commit message'`
-5. Envie as alterações pra sua branch: `git push origin feature-123`
-6. [Envie sua pull request](https://help.github.com/articles/using-pull-requests/)
-
-
-## **Precauções de contribuição**  
-Antes de enviar sua colaboração verifique seu código e as conveções adotadas no projeto e tome as seguintes providências:  
-
-- **Sempre verifique a branch que está sendo usada**  
-```shell
-git status
-```
-
-- **Faça uma atualização prévia do seu chechout**  
-```shell
-git pull
-```
-
-- **Veja as diferenças antes de commitar**  
-```shell
-git diff --cached
-```
-
-- **Não commite antes de rodar o projeto localmente**
-- **Veja as mudanças implementadas sendo executadas**  
-- **E principalmente tenha certeza que essas alterações funcionam**  
-- **[Comandos úteis do git](https://gist.github.com/leocomelli/2545add34e4fec21ec16)**
+## **DEPLOY**
+Before deploying it is necessary to build the project.<br>
+**`$ ionic build`**
+<br>or
+<br>
+**`$ ng build --prod --aot --build-optimizer --vendor-chunk --source-map=false`**
 
 
+The project uses firebase itself through its command line tool.<br>
+**`$ firebase deploy`**
 
+<br>
 
-## **Deploy**
-O projeto utiliza o próprio firebase através de sua ferramenta de linha comando. Antes de fazer o deploy é necessário fazer o build do projeto.
+## **FIREBASE**
+In order to have access to [registered users on Firebase](https://firebase.google.com/docs/cli/auth#CSV) a different procedure is required.<br>
+**`$ firebase auth:export exportation.csv`**
 
-```shell
-ionic build   "ng build --prod --aot --build-optimizer --vendor-chunk --source-map=false"  
-```
+<br>
 
-```shell
-firebase deploy
-```
+## **CHANGELOG**  
+= **2.7** - 06/05/2021  
+Fixação das versões das dependências e melhora do arquivo de instrução.
 
-
-
-## **Extra Information**
-https://firebase.google.com/docs/cli/auth#CSV
-
-```shell
-"firebase auth:export exportation.csv"  
-```
-
-
-
-___
-
-
-
-# **Changelog**  
 = **2.6** - 14/11/2020  
 Ajustes para permitir exibição pública do projeto no GitHub
 
